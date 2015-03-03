@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.coffee",
   "scripts": {
-    "start": "DEBUG=tile-cache coffee server.coffee"
+    "start": "DEBUG=tile-cache ENV=production nodemon server.coffee"
   },
   "author": "",
   "license": "ISC",
