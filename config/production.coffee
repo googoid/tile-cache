@@ -1,5 +1,5 @@
 module.exports =
-  cacheLifetime: 24 * 60 * 60
+  cacheLifetime: 48 * 60 * 60
   port: 3005
   mongodb: 'mongodb://localhost:27017/tile-cache'
   tileServer:
