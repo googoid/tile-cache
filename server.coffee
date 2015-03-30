@@ -66,19 +66,20 @@ fetchTileData = (x, y, zoom) ->
       reject err
   
 downloadTileData = (x, y, zoom) ->
+  debug "download #{zoom}/#{x}/#{y}"
   new Promise (resolve, reject) ->
-    pathname = "/#{config.lyrkServer.resolution}/#{zoom}/#{x}/#{y}"
+    pathname = config.tileServer.path
+    pathname = pathname.replace '{zoom}', zoom
+    pathname = pathname.replace '{x}', x
+    pathname = pathname.replace '{y}', y
+    pathname = pathname.replace '{res}', config.tileServer.resolution
+    pathname += '?access_token=' + config.tileServer.accessToken
+    
     options =
-      hostname: config.lyrkServer.hostname
+      hostname: config.tileServer.hostname
       method: 'GET'
       path: pathname
-      headers:
-        ':method': 'GET'
-        ':host': config.lyrkServer.hostname
-        ':scheme': config.lyrkServer.scheme
-        ':path': pathname
-        ':version': 'HTTP/1.1'
-        referer: 'https://geodienste.lyrk.de/'
+      #headers:
     req = http.request options
     req.on 'response', (res) ->
       if res.statusCode isnt 200

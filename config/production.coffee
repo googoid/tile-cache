@@ -2,7 +2,9 @@ module.exports =
   cacheLifetime: 24 * 60 * 60
   port: 3005
   mongodb: 'mongodb://localhost:27017/tile-cache'
-  lyrkServer:
-    hostname: 'tiles.lyrk.org'
+  tileServer:
+    hostname: 'b.tiles.mapbox.com'
+    path: '/v4/mapbox.streets/{zoom}/{x}/{y}'
     scheme: 'http'
-    resolution: 'lr'
+    resolution: '@2x.png'
+    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q'
